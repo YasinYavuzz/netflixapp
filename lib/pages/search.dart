@@ -37,12 +37,12 @@ class _SearchPageState extends State<SearchPage> {
               itemCount: item.items.length,
               itemBuilder: (context, index) {
               item.index = index;
-              return TopSearchListViewItem();
+              return TopSearchListViewItem(videoUrl: item.getVideo(index),);
             },),
           )
         ],
       ),
-      //bottomNavigationBar: bottomNavigationBar(),
+      bottomNavigationBar: bottomNavigationBar(),
     );
     },);
   }
