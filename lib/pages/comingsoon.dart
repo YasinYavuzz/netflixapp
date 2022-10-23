@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:netflixapp/provider/comingsoon_provider.dart';
+import 'package:netflixapp/provider/comingsoon/comingsoon_provider.dart';
 import 'package:netflixapp/widgets/bottomnavigationbar/bottomnavigationbar.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -27,7 +27,7 @@ class _ComingSoonPageState extends State<ComingSoonPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.only(top: 6.h, left: 1.6.h),
+                margin: EdgeInsets.only(top: 6.h, left: 1.6.h, bottom: 2.h),
                 width: 16.h,
                 height: 3.h,
                 child: Row(
@@ -57,6 +57,7 @@ class _ComingSoonPageState extends State<ComingSoonPage> {
                 width: 100.w,
                 height: 20.h,
                 child: ListView.builder(
+                  padding: EdgeInsets.zero,
                   itemCount: item.movieList!.length,
                   itemBuilder: (context, index) {
                     return Container(
@@ -115,7 +116,7 @@ class _ComingSoonPageState extends State<ComingSoonPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 2.1.h),
+                margin: EdgeInsets.only(top: 1.h),
                 width: double.infinity,
                 height: 195,
                 child: Image.asset(
@@ -162,7 +163,7 @@ class _ComingSoonPageState extends State<ComingSoonPage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 1.6.h, left: 1.5.h),
+                margin: EdgeInsets.only(top: 1.6.h, left: 1.5.h, bottom: 2.h),
                 width: 44.h,
                 height: 14.6.h,
                 child: Column(
@@ -261,6 +262,7 @@ class _ComingSoonPageState extends State<ComingSoonPage> {
                 width: double.infinity,
                 height: 11.h,
                 child: ListView.builder(
+                  padding: EdgeInsets.zero,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: 1,
                   shrinkWrap: true,
@@ -277,7 +279,7 @@ class _ComingSoonPageState extends State<ComingSoonPage> {
             ],
           ),
         ),
-       // bottomNavigationBar: bottomNavigationBar(),
+        // bottomNavigationBar: bottomNavigationBar(),
       );
     }));
   }

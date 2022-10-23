@@ -9,17 +9,16 @@ import 'package:video_player/video_player.dart';
 class TopSearchListViewItem extends StatefulWidget {
   TopSearchListViewItem({super.key, required this.videoUrl});
   String videoUrl;
-  
+
   @override
   State<TopSearchListViewItem> createState() => _TopSearchListViewItemState();
 }
 
 class _TopSearchListViewItemState extends State<TopSearchListViewItem> {
-  
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, searchProvider item, widget) {
+    return Consumer<SearchProvider>(
+      builder: (context, item, widget) {
         return Container(
           margin: EdgeInsets.only(top: 0.3.h),
           width: 100.w,
@@ -51,18 +50,20 @@ class _TopSearchListViewItemState extends State<TopSearchListViewItem> {
                   Navigator.push<void>(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => VideoPlayers(videoUrl : this.widget.videoUrl),
+                      builder: (BuildContext context) =>
+                          VideoPlayers(videoUrl: this.widget.videoUrl),
                     ),
                   );
                 },
                 child: Container(
-                  
                   margin: EdgeInsets.only(left: 3.h),
                   //padding: EdgeInsets.(2.h),
                   alignment: Alignment.centerLeft,
                   width: 5.h,
                   height: 10.h,
-                  child: Image.asset('assets/search/playbutton.png',),
+                  child: Image.asset(
+                    'assets/search/playbutton.png',
+                  ),
                 ),
               ),
             ],

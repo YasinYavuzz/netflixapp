@@ -21,29 +21,36 @@ class _SearchPageState extends State<SearchPage> {
   //int index = 0;
   @override
   Widget build(BuildContext context) {
-    return Consumer(builder: (context, searchProvider item, widget) {
-      //item.index = index;
-      return Scaffold(
-      backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          TextFieldWidget(),
-          TopSearchTextWidget(),
-          SizedBox(
-            width: 100.w,
-            height: 72.h,
-            child: ListView.builder(
-              padding: EdgeInsets.all(0),
-              itemCount: item.items.length,
-              itemBuilder: (context, index) {
-              item.index = index;
-              return TopSearchListViewItem(videoUrl: item.getVideo(index),);
-            },),
-          )
-        ],
-      ),
-      bottomNavigationBar: bottomNavigationBar(),
+    return Consumer<SearchProvider>(
+      builder: (context, item, widget) {
+        //item.index = index;
+        return Scaffold(
+          backgroundColor: Colors.black,
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  TextFieldWidget(),
+                  TopSearchTextWidget(),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    padding: const EdgeInsets.all(0),
+                    itemCount: item.items.length,
+                    itemBuilder: (context, index) {
+                      item.index = index;
+                      return TopSearchListViewItem(
+                        videoUrl: item.getVideo(index),
+                      );
+                    },
+                  )
+                ],
+              ),
+            ),
+          ),
+          //bottomNavigationBar: BottomNavBarWidget(),
+        );
+      },
     );
-    },);
   }
 }
